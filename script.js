@@ -1,0 +1,2 @@
+const Gameboard = {};
+const Players = {};
