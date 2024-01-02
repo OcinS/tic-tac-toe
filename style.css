@@ -1,5 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,900&display=swap');
 
+:root {
+    /* Colors */
+    --white-color: #F7F9F9;
+    --black-color: #283044;
+    --blue-color: #42CAFD;
+    --purple-color: #8A1C7C;
+    --orange-color: #FFBE86;
+    --green-color: #26A96C;
+
+    /* Font Sizes */
+    --h1: 2.5rem;
+    --h2: 1.5rem;
+    --footer-font: 1.3rem;
+    --button-font: 1rem;
+}
+
 /* Global Styles */
 
 * {
@@ -13,6 +29,7 @@
 
 body {
     min-height: 100vh;
+    background-color: var(--white-color);
 }
 
 main {
@@ -31,7 +48,8 @@ main {
 }
 
 .cell {
-    border: 2px solid black;
+    border: 2px solid var(--black-color);
+    color: var(--black-color);
     width: clamp(5rem, 7.83vw - 0.021rem, 9.375rem);
     height: clamp(5rem, 7.83vw - 0.021rem, 9.375rem);
     text-align: center;
@@ -40,24 +58,45 @@ main {
     cursor: pointer;
 }
 
+button {
+    padding: 8px 18px;
+    color: var(--white-color);
+    font-size: var(--button-font);
+    font-weight: 600;
+    outline: none;
+    background-color: var(--green-color);
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    color: var(--green-color);
+    background-color: var(--white-color);
+}
+
 /* Text Styles */
 
 h1 {
-    font-size: 2.5rem;
+    font-size: var(--h1);
     font-weight: 900;
+    color: var(--black-color);
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: var(--h2);
     font-weight: 600;
 }
 
 footer {
-    font-size: 1rem;
+    font-size: var(--footer-font);
     font-weight: 600;
 }
 
 footer a {
     text-decoration: none;
-    color: green    ;
+    color: var(--green-color);
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
