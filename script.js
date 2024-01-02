@@ -1,3 +1,4 @@
+// Wrapped factory functions to make the variables not accessible locally 
 gameModule = (function() {
 
     const cells = document.querySelectorAll(`.cell`);
@@ -20,8 +21,10 @@ gameModule = (function() {
 
     initializeGame();
 
+    // This function will run the Game Flow
     function initializeGame() {
 
+        // Assign Index number to a Cell, Update it and check the winner whenever a cell is clicked
         cells.forEach(cell => cell.addEventListener(`click`, function(e) {
 
             const cellArray = e.target.parentNode.children;
@@ -44,30 +47,44 @@ gameModule = (function() {
 
     };
 
+    // Update value on a specific Index on the Game Board and Update clicked Cell text content
     function updateCell(cell, index) {
+
         gameBoard[index] = currentPlayer;
+
         cell.textContent = currentPlayer;
         
+        // Update Cell text color based on the Current Player
         if (currentPlayer === "X") {
             cell.style.color = "var(--blue-color)";
         } else {
             cell.style.color = "var(--purple-color)";
         }
-    };
 
+    };
+    
+    // Change Player's Turn whether X or O
     function changePlayer() {
+
         currentPlayer = (currentPlayer === `X`) ? `O` : `X`;
+
         statusText.textContent = `${currentPlayer}'s Turn`;
+        
+        // Update Status text color based on the Current Player
         if (currentPlayer === "X") {
             statusText.style.color = "var(--blue-color)";
         } else {
             statusText.style.color = "var(--purple-color)";
         }
+
     };
 
+    // Check winners if which Player won based on the Winning Conditions or ties the Game
     function checkWinner() {
+
         let roundWon = false;
 
+        // Iterate the Winning Conditions to check if the current Game Board has a winner
         for (let i = 0; i < winningConditions.length; i++) {
 
             const condition = winningConditions[i];
@@ -95,20 +112,31 @@ gameModule = (function() {
         
         else if (!gameBoard.includes("")) {
             statusText.textContent = `It's a Tie!`;
+            statusText.style.color = "var(--orange-color)";
             running = false;
         }
 
         else {
             changePlayer();
         }
+
     };
 
+    // Restart the Game by setting data into its original form
     function restartGame() {
+
         gameBoard = ["", "", "", "", "", "", "", "", ""]
+
         cells.forEach(cell => cell.textContent = "");
+
         currentPlayer = `X`;
+
         statusText.textContent = `${currentPlayer}'s Turn`;
+
+        statusText.style.color = "var(--blue-color)";
+
         running = true;
+
     };
 
 })();
